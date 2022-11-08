@@ -6,7 +6,7 @@
       <header>
         <h2>Welcome @{{ $store.state.username }}</h2>
       </header>
-      <CreateFreetForm />
+      <CreateFreetForm v-if="!incognito" />
     </section>
     <section v-else>
       <header>
@@ -94,3 +94,4 @@ section .scrollbox {
   overflow-y: scroll;
 }
 </style>
+

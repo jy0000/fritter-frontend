@@ -26,6 +26,12 @@
       >
         Login
       </router-link>
+      <router-link
+        v-if="$store.state.username"
+        to="/profiles"
+      >
+        Profiles
+      </router-link>
     </div>
     <section class="alerts">
       <article
@@ -79,3 +85,4 @@ img {
     width: 25%;
 }
 </style>
+

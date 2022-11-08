@@ -16,6 +16,14 @@
       </header>
       <LogoutForm />
       <DeleteAccountForm />
+      <button 
+        v-if="!incognito" 
+        @click="incognitoOn"
+      />
+      <button
+        v-else
+        @click="incognitoOff"
+      />
     </section>
   </main>
 </template>
@@ -36,3 +44,4 @@ export default {
   }
 };
 </script>
+  

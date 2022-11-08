@@ -1,22 +1,22 @@
-<!-- Form for changing password (block style) -->
+<!-- Form for changing display (block style) -->
 
 <script>
 import BlockForm from '@/components/common/BlockForm.vue';
 
 export default {
-  name: 'ChangePasswordForm',
+  name: 'ChangeDisplayForm',
   mixins: [BlockForm],
   data() {
     return {
-      url: '/api/users',
-      method: 'PATCH',
+      url: '/api/display',
+      method: 'PUT',
       hasBody: true,
       fields: [
-        {id: 'password', label: 'Password', value: ''}
+        {id: 'display', label: 'Display (default, dark, accessible)', value: ''}
       ],
-      title: 'Change password',
+      title: 'Change display',
       callback: () => {
-        const message = 'Successfully changed password!';
+        const message = 'Successfully changed display!';
         this.$set(this.alerts, message, 'success');
         setTimeout(() => this.$delete(this.alerts, message), 3000);
       }

@@ -99,3 +99,4 @@ class FreetCollection {
 }
 
 export default FreetCollection;
+

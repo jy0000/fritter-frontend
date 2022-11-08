@@ -1,35 +1,38 @@
-import type {Types} from 'mongoose';
+import type {Types, PopulatedDoc, Document} from 'mongoose';
 import {Schema, model} from 'mongoose';
 import type {User} from '../user/model';
+import type {Freet} from '../freet/model';
 
 /**
- * This file defines the properties stored in a Freet
+ * This file defines the properties stored in a Reaction
  * DO NOT implement operations here ---> use collection file
  */
 
-// Type definition for Freet on the backend
-export type Freet = {
+// Type definition for Reaction on the backend
+export type Reaction = {
   _id: Types.ObjectId; // MongoDB assigns each object this ID on creation
-  authorId: Types.ObjectId;
+  userId: Types.ObjectId;
+  freetId: Types.ObjectId;
+  symbol: string;
   dateCreated: Date;
-  content: string;
   dateModified: Date;
 };
 
-export type PopulatedFreet = {
+export type PopulatedReaction = {
   _id: Types.ObjectId; // MongoDB assigns each object this ID on creation
-  authorId: User;
+  userId: User;
+  freetId: Freet;
+  symbol: string;
   dateCreated: Date;
-  content: string;
   dateModified: Date;
 };
 
 // Mongoose schema definition for interfacing with a MongoDB table
-// Freets stored in this table will have these fields, with the
+// Reactions stored in this table will have these fields, with the
 // type given by the type property, inside MongoDB
-const FreetSchema = new Schema<Freet>({
-  // The author userId
-  authorId: {
+const ReactionSchema = new Schema<Reaction>({
+  // The user userId
+  userId: {
     // Use Types.ObjectId outside of the schema
     type: Schema.Types.ObjectId,
     required: true,
@@ -40,8 +43,15 @@ const FreetSchema = new Schema<Freet>({
     type: Date,
     required: true
   },
-  // The content of the freet
-  content: {
+  // The freet id
+  freetId: {
+    // Use Types.ObjectId outside of the schema
+    type: Schema.Types.ObjectId,
+    required: true,
+    ref: 'Freet'
+  },
+  // The reaction's symbol to the freet
+  symbol: {
     type: String,
     required: true
   },
@@ -52,6 +62,5 @@ const FreetSchema = new Schema<Freet>({
   }
 });
 
-const FreetModel = model<Freet>('Freet', FreetSchema);
-export default FreetModel;
-
+const ReactionModel = model<Reaction>('Reaction', ReactionSchema);
+export default ReactionModel;
