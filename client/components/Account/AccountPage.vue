@@ -16,14 +16,19 @@
       </header>
       <LogoutForm />
       <DeleteAccountForm />
+      <ChangeDisplayForm />
       <button 
         v-if="!incognito" 
         @click="incognitoOn"
-      />
+      >
+        incognitoOn
+      </button>
       <button
         v-else
         @click="incognitoOff"
-      />
+      >
+        incognitoOff
+      </button>
     </section>
   </main>
 </template>
@@ -31,6 +36,7 @@
 <script>
 import ChangeUsernameForm from '@/components/Account/ChangeUsernameForm.vue';
 import ChangePasswordForm from '@/components/Account/ChangePasswordForm.vue';
+import ChangeDisplayForm from '@/components/Account/ChangeDisplayForm.vue';
 import DeleteAccountForm from '@/components/Account/DeleteAccountForm.vue';
 import LogoutForm from '@/components/Account/LogoutForm.vue';
 
@@ -40,6 +46,7 @@ export default {
     ChangeUsernameForm,
     ChangePasswordForm,
     DeleteAccountForm,
+    ChangeDisplayForm,
     LogoutForm
   }
 };
